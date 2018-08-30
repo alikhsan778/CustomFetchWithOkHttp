@@ -34,10 +34,10 @@ hanya sebuah modul simpel untuk melakukan upload dan mengirim data via rest full
 * untuk penggunaan untuk mengirim data berupa teks berikut adalah contohnya : 
 
 ```
-CustomFetch fetch = new CustomFetch(this,"your server url");
+CustomFetch fetch = new CustomFetch(this,"url server anda");
 
         fetch.SetType(CustomFetch.TypeMessage);
-        fetch.AddSendStringMessageData(new SendStringMessage("Data","Hello world"));
+        fetch.AddSendStringMessageData(new SendStringMessage("NAMA FORM","ISI PESAN"));
 
         fetch.SetOnSendMyDataListener(new OnSendTheFetch.OnSendMyDataListener() {
             @Override
@@ -60,10 +60,10 @@ fetch.execute();
 * untuk penggunaan untuk mengirim data berupa file berikut adalah contohnya : 
 
 ```
-CustomFetch fetch = new CustomFetch(this,"your server url");
+CustomFetch fetch = new CustomFetch(this,"url server anda");
 
         fetch.SetType(CustomFetch.TypeFile);
-        fetch.AddUploadFileData(UploadFileData("foto",new file("path file anda")));
+        fetch.AddUploadFileData(UploadFileData("NAMA FORM",new file("path file anda")));
 
         fetch.SetOnSendMyDataListener(new OnSendTheFetch.OnSendMyDataListener() {
             @Override
