@@ -25,7 +25,7 @@ hanya sebuah modul simpel untuk melakukan upload dan mengirim data via rest full
 
 	dependencies {
 		...
-		implementation ''
+		implementation 'com.github.renosyah:CustomFetchWithOkHttp:v0.1'
 	
 	}
 
