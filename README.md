@@ -83,6 +83,23 @@ fetch.execute();
 ```
 
 
+* kedua-duanya dapat di sesuaikan, berapa banyak yang ingin di upload, tinggal add aja : 
+
+```
+
+	fetch.AddUploadFileData(UploadFileData("NAMA FORM 1",new file("path file 1 anda")));
+	fetch.AddUploadFileData(UploadFileData("NAMA FORM 2",new file("path file 2 anda")));
+	fetch.AddUploadFileData(UploadFileData("NAMA FORM 3",new file("path file 3 anda")));
+	// mengupload 3 gambar sekaligus
+	
+	// atau
+
+        fetch.AddSendStringMessageData(new SendStringMessage("NAMA FORM 1","ISI PESAN 1"));
+        fetch.AddSendStringMessageData(new SendStringMessage("NAMA FORM 2","ISI PESAN 2"));
+        fetch.AddSendStringMessageData(new SendStringMessage("NAMA FORM 3","ISI PESAN 3"));
+	// mengupload 3 pesan sekaligus
+```
+
 * pengaturan untuk bahasa indonesia/inggris :
 
 ```
