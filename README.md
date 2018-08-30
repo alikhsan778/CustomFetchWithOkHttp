@@ -63,7 +63,7 @@ fetch.execute();
 CustomFetch fetch = new CustomFetch(this,"url server anda");
 
         fetch.SetType(CustomFetch.TypeFile);
-        fetch.AddUploadFileData(UploadFileData("NAMA FORM",new file("path file anda")));
+        fetch.AddUploadFileData(new UploadFileData("NAMA FORM",new file("path file anda")));
 
         fetch.SetOnSendMyDataListener(new OnSendTheFetch.OnSendMyDataListener() {
             @Override
@@ -87,9 +87,9 @@ fetch.execute();
 
 ```
 
-	fetch.AddUploadFileData(UploadFileData("NAMA FORM 1",new file("path file 1 anda")));
-	fetch.AddUploadFileData(UploadFileData("NAMA FORM 2",new file("path file 2 anda")));
-	fetch.AddUploadFileData(UploadFileData("NAMA FORM 3",new file("path file 3 anda")));
+	fetch.AddUploadFileData(new UploadFileData("NAMA FORM 1",new file("path file 1 anda")));
+	fetch.AddUploadFileData(new UploadFileData("NAMA FORM 2",new file("path file 2 anda")));
+	fetch.AddUploadFileData(new UploadFileData("NAMA FORM 3",new file("path file 3 anda")));
 	// mengupload 3 gambar sekaligus
 	
 	// atau
