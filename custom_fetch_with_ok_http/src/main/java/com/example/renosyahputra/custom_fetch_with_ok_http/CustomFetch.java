@@ -118,22 +118,33 @@ public class CustomFetch extends AsyncTask<Void,Void,String>{
 
     @Override
     protected void onPostExecute(String s) {
-        super.onPostExecute(s);
-        onSendMyDataListener.OnResponse(s,(!s.equals("")));
-        customDialogLoading.Dismiss();
+        
+	if (onSendMyDataListener != null && customDialogLoading != null){
+        	onSendMyDataListener.OnResponse(s,(!s.equals("")));
+        	customDialogLoading.Dismiss();
+	}
+
+	super.onPostExecute(s);
     }
 
     @Override
     protected void onCancelled(String s) {
-        super.onCancelled(s);
-        onSendMyDataListener.OnResponse(s,false);
-        customDialogLoading.Dismiss();
+        
+	if (onSendMyDataListener != null && customDialogLoading != null){
+        	onSendMyDataListener.OnResponse(s,false);
+        	customDialogLoading.Dismiss();
+	}
+
+	super.onCancelled(s);
     }
 
     @Override
     protected void onCancelled() {
-        super.onCancelled();
-        onSendMyDataListener.OnResponse("",false);
-        customDialogLoading.Dismiss();
+       	if (onSendMyDataListener != null && customDialogLoading != null){
+        	onSendMyDataListener.OnResponse("",false);
+        	customDialogLoading.Dismiss();
+	}
+
+	super.onCancelled();
     }
 }
