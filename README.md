@@ -34,7 +34,7 @@ hanya sebuah modul simpel untuk melakukan upload dan mengirim data via rest full
 
 	dependencies {
 		...
-		implementation 'com.github.renosyah:CustomFetchWithOkHttp:v0.2'
+		implementation 'com.github.renosyah:CustomFetchWithOkHttp:v0.3'
 	
 	}
 
@@ -57,6 +57,7 @@ CustomFetch fetch = new CustomFetch(this,"url server anda");
             }
         });
 
+	fetch.SetenableLoadingDialog(true);
         fetch.SetIndonesian();
         fetch.SetColor(Color.BLUE);
 
@@ -83,6 +84,7 @@ CustomFetch fetch = new CustomFetch(this,"url server anda");
             }
         });
 
+	fetch.SetenableLoadingDialog(true);
         fetch.SetIndonesian();
         fetch.SetColor(Color.BLUE);
 

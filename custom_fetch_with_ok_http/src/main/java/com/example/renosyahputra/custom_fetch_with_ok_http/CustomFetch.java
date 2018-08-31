@@ -31,6 +31,8 @@ public class CustomFetch extends AsyncTask<Void,Void,String>{
     private LangObj lang = new LangObj();
     private int color = 0;
     CustomDialogLoading customDialogLoading = new CustomDialogLoading();
+    private Boolean enableLoadingDialog = false;
+
 
 
     public CustomFetch(Context context, String url) {
@@ -73,6 +75,10 @@ public class CustomFetch extends AsyncTask<Void,Void,String>{
         uploadFileDataArray.add(uploadFileData);
     }
 
+    public void SetenableLoadingDialog(Boolean enableLoadingDialog) {
+        this.enableLoadingDialog = enableLoadingDialog;
+    }
+
     @Override
     protected void onPreExecute() {
         super.onPreExecute();
@@ -85,8 +91,10 @@ public class CustomFetch extends AsyncTask<Void,Void,String>{
             color = Color.BLUE;
         }
 
-
-        customDialogLoading.ShowCustomDialogLoading(context,lang.TitleLoading,lang.MessageLoading,lang,color);
+	if (enableLoadingDialog){
+        	customDialogLoading.ShowCustomDialogLoading(context,lang.TitleLoading,lang.MessageLoading,lang,color);
+	}
+        
 
         if (typeFetch.equals(TypeFile)){
 
@@ -119,8 +127,11 @@ public class CustomFetch extends AsyncTask<Void,Void,String>{
     @Override
     protected void onPostExecute(String s) {
         
-	if (onSendMyDataListener != null && customDialogLoading != null){
+	if (onSendMyDataListener != null){
         	onSendMyDataListener.OnResponse(s,(!s.equals("")));
+	}
+
+	if (enableLoadingDialog){
         	customDialogLoading.Dismiss();
 	}
 
@@ -130,21 +141,23 @@ public class CustomFetch extends AsyncTask<Void,Void,String>{
     @Override
     protected void onCancelled(String s) {
         
-	if (onSendMyDataListener != null && customDialogLoading != null){
+	if (onSendMyDataListener != null){
         	onSendMyDataListener.OnResponse(s,false);
+	}
+	if (enableLoadingDialog){
         	customDialogLoading.Dismiss();
 	}
-
 	super.onCancelled(s);
     }
 
     @Override
     protected void onCancelled() {
-       	if (onSendMyDataListener != null && customDialogLoading != null){
+       	if (onSendMyDataListener != null){
         	onSendMyDataListener.OnResponse("",false);
+	}
+	if (enableLoadingDialog){
         	customDialogLoading.Dismiss();
 	}
-
 	super.onCancelled();
     }
 }
