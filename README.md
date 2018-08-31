@@ -132,7 +132,7 @@ fetch.execute();
 	int CustomColor = ResourcesCompat.getColor(this.getResources(), R.color.colorPrimaryDark,null);
 	// persiapkan warna yg ingin digunakan	
 
-	fetch.SetTheme(CustomColor);
+	fetch.SetColor(CustomColor);
 	// set kedalam dialog
 
 
