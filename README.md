@@ -4,6 +4,15 @@ hanya sebuah modul simpel untuk melakukan upload dan mengirim data via rest full
 
 ## Instalasi
 
+* jangan lupa tambahkan izin akses internet di AndroidManifest.xml
+
+```
+	...
+    	<uses-permission android:name="android.permission.INTERNET"/>
+	...
+
+```
+
 
 * tambahkan kedalam build.gradle : 
 
