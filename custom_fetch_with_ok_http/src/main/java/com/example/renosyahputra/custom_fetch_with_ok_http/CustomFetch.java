@@ -34,7 +34,6 @@ public class CustomFetch extends AsyncTask<Void,Void,String>{
     private Boolean enableLoadingDialog = false;
 
 
-
     public CustomFetch(Context context, String url) {
         this.context = context;
         this.Url = url;
@@ -71,8 +70,16 @@ public class CustomFetch extends AsyncTask<Void,Void,String>{
         sendStringMessagesArray.add(sendStringMessage);
     }
 
+    public void ClearSendStringMessageData(){
+        sendStringMessagesArray.clear();
+    }
+
     public void AddUploadFileData(UploadFileData uploadFileData){
         uploadFileDataArray.add(uploadFileData);
+    }
+
+    public void ClearUploadFileData(){
+        uploadFileDataArray.clear();
     }
 
     public void SetenableLoadingDialog(Boolean enableLoadingDialog) {
@@ -81,7 +88,6 @@ public class CustomFetch extends AsyncTask<Void,Void,String>{
 
     @Override
     protected void onPreExecute() {
-        super.onPreExecute();
 
         if (lang.TitleLoading.equals("")){
             this.SetEnglish();
@@ -105,19 +111,21 @@ public class CustomFetch extends AsyncTask<Void,Void,String>{
             requestBody = SetRequestBodyForMessage(sendStringMessagesArray);
 
         }
-
+        super.onPreExecute();
     }
 
     @Override
     protected String doInBackground(Void... voids) {
         String s = "";
-        try {
-            Request request = new Request.Builder().url(Url).post(requestBody).build();
-            okhttp3.Response response = client_upload.newCall(request).execute();
-            s += response.body().string();
+        if (requestBody != null) {
+            try {
+                Request request = new Request.Builder().url(Url).post(requestBody).build();
+                okhttp3.Response response = client_upload.newCall(request).execute();
+                s += response.body().string();
 
-        }catch (Exception e){
-            e.printStackTrace();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
         return s;
     }
@@ -152,7 +160,8 @@ public class CustomFetch extends AsyncTask<Void,Void,String>{
 
     @Override
     protected void onCancelled() {
-       	if (onSendMyDataListener != null){
+
+    if (onSendMyDataListener != null){
         	onSendMyDataListener.OnResponse("",false);
 	}
 	if (enableLoadingDialog){

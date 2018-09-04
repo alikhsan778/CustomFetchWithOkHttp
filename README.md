@@ -34,7 +34,7 @@ hanya sebuah modul simpel untuk melakukan upload dan mengirim data via rest full
 
 	dependencies {
 		...
-		implementation 'com.github.renosyah:CustomFetchWithOkHttp:v0.3'
+		implementation 'com.github.renosyah:CustomFetchWithOkHttp:v0.4'
 	
 	}
 
@@ -119,7 +119,21 @@ fetch.execute();
 	// mengupload 3 pesan sekaligus
 ```
 
-* pengaturan untuk bahasa indonesia/inggris :
+* jika ingin menghapus, tinggal memanggil perintah clear : 
+
+
+```
+
+	fetch.ClearSendStringMessageData(); // membersihkan list pesan
+
+	//atau
+
+	fetch.ClearUploadFileData(); // membersihkan list file yg ingin diupload
+
+```
+
+
+* pengaturan untuk bahasa indonesia/inggris pada dialog loading (jika diaktifkan) :
 
 ```
 
